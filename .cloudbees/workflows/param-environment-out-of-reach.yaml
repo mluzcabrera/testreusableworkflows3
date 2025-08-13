@@ -1,0 +1,25 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Param environment out of reach
+on:
+  workflow_dispatch:
+    inputs:
+      targetenv:
+        type: string
+        required: true
+        default: mlcb_environment_out_of_reach
+jobs:
+
+  testparamenv:
+    environment: ${{ inputs.targetenv }}
+    steps:
+      - name: Print testvar
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ vars.testvar }}"
+      - name: Print testsec
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ secrets.testsec }}"
