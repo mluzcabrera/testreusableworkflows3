@@ -1,0 +1,30 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: mapping
+on:
+  workflow_dispatch:
+    inputs:
+        targetenv:
+            type: string
+            default: "environment_mlcb_test_param"
+jobs:
+  print:
+    steps:
+      - name: Print testvar
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ vars.testvar }}"
+      - name: Print testsec
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testsec: ${{ secrets.testsec }} . is this masked?-> hardcode "
+    needs: testcall
+  testcall:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable.yaml
+    secrets:
+      testsec2: "hardcode"
+    vars: inherit
+    with:
+      targetenv: ${{ inputs.targetenv }}
