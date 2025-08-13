@@ -1,0 +1,17 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: Param environment in parallel exists nnnn
+on:
+
+  workflow_dispatch:
+    inputs:
+      targetenv:
+        type: string
+        default: ''
+jobs:
+  testcall:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable2.yaml
+    secrets: inherit
+    vars: inherit
+    with:
+      targetenv: ${{ inputs.targetenv }}
