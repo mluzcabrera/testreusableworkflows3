@@ -11,7 +11,7 @@ on:
 jobs:
   testhardocedenv:
     needs: print1
-    environment: environment_mlcb_top2
+    environment: environment_mlcb_test_param
     steps:
       - name: Print testvar
         uses: docker://golang:1.20.3-alpine3.17
