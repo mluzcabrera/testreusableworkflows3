@@ -7,7 +7,7 @@ on:
       targetenv:
         type: string
         required: true
-        default: environment_mlcb_top2
+        default: environment_mlcb_test_param
 jobs:
   testhardocedenv:
     environment: environment_mlcb_top2
