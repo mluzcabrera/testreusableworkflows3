@@ -1,0 +1,18 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: call same org
+
+on:
+  workflow_dispatch:
+    inputs:
+        targetenv: 
+            type: string
+            default: targetenv
+
+jobs:
+  call:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/mlcbsimplerw.yaml
+    vars: inherit
+    secrets: inherit
+    with:
+        targetenv: ${{ inputs.targetenv }}
