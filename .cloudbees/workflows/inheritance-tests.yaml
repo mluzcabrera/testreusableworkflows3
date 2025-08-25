@@ -28,6 +28,7 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }} 
       testvar: "overriden testvar" 
+    secrets:
       testsec: "hardcode"
         
 
