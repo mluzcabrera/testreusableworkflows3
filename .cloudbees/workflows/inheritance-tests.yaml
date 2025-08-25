@@ -28,7 +28,7 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }} 
       testvar: "overriden testvar" 
-      testsecret: "hardcode"
+      testsec: "hardcode"
         
 
    # This must fail because that input does not exist
