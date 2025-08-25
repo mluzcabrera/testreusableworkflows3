@@ -21,7 +21,7 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }}
 
-  # This one should work as I am enabling inheritance
+  # This one should work 
    testoverride:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable.yaml
     vars: inherit
