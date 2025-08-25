@@ -1,0 +1,21 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: override tests
+on:
+  workflow_dispatch:
+    inputs:
+      targetenv:
+        type: string
+      
+
+jobs:
+  
+  # This one should work and use the overriden value
+   testoverride:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
+    vars: inherit
+    with:
+      targetenv: ${{ inputs.targetenv }} 
+      testvar: "overriden testvar" 
+    secrets:
+      testsec: "hardcode"
