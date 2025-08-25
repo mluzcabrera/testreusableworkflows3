@@ -35,3 +35,19 @@ jobs:
         shell: sh
         run: |
           echo "testvar: ${{ secrets.testsec }}"
+  print1:
+    needs: testparamenv
+    steps:
+     - name: Print testsec
+       uses: docker://golang:1.20.3-alpine3.17
+       shell: sh
+       run: |
+         echo "testvar: ${{ secrets.testsec }}"
+  print2:
+    needs: testhardocedenv
+    steps:
+     - name: Print testsec
+       uses: docker://golang:1.20.3-alpine3.17
+       shell: sh
+       run: |
+         echo "testvar: ${{ secrets.testsec }}"
