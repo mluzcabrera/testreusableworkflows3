@@ -13,7 +13,7 @@ jobs:
   # This one should work and use the overriden value
    testoverride:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
-    vars: inherit
+    # vars: inherit
     with:
       targetenv: ${{ inputs.targetenv }} 
       testvar: "overriden testvar" 
