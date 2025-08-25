@@ -18,3 +18,21 @@ jobs:
       targetenv: ${{ inputs.targetenv }} 
     secrets:
       testsec: "hardcode"
+
+  # This one should work and use the overriden value
+   testoverride_empty:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
+    # vars: inherit
+    with:
+      targetenv: "" 
+    secrets:
+      testsec: "hardcode"
+
+  # This one should work and use the overriden value
+   testoverride_hardcoded:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
+    # vars: inherit
+    with:
+      targetenv: "environment_mlcb_test_param"
+    secrets:
+      testsec: "hardcode"
