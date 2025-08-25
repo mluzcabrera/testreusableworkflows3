@@ -20,6 +20,7 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }}
 
+   # This must fail because that input does not exist
    # testcallwronginput:
    #  uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable.yaml
    #  vars: inherit
