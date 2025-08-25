@@ -6,6 +6,7 @@ on:
     inputs:
       targetenv:
         type: string
+      
 
 jobs:
   # This one should fail as I am not enabling inheritance
@@ -19,6 +20,16 @@ jobs:
     secrets: inherit
     with:
       targetenv: ${{ inputs.targetenv }}
+
+  # This one should work as I am enabling inheritance
+   testoverride:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable.yaml
+    vars: inherit
+    secrets: inherit
+    with:
+      targetenv: ${{ inputs.targetenv }} 
+      testvar: "overriden testvar" 
+        
 
    # This must fail because that input does not exist
    # testcallwronginput:
@@ -39,4 +50,4 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "testsec: ${{ secrets.testsec }}"
+          echo "testsec: ${{ secrets.testsec }}
