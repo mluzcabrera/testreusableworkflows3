@@ -23,6 +23,7 @@ jobs:
         run: |
           echo "testvar: ${{ secrets.testsec }}"
   testparamenv:
+    needs: print2
     environment: ${{ inputs.targetenv }}
     steps:
       - name: Print testvar
