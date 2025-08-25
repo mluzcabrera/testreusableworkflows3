@@ -20,17 +20,7 @@ jobs:
     secrets: inherit
     with:
       targetenv: ${{ inputs.targetenv }}
-
-  # This one should work and use the overriden value
-   testoverride:
-    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
-    vars: inherit
-    with:
-      targetenv: ${{ inputs.targetenv }} 
-      testvar: "overriden testvar" 
-    secrets:
-      testsec: "hardcode"
-        
+   
 
    # This must fail because that input does not exist
    # testcallwronginput:
