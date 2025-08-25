@@ -10,28 +10,25 @@ on:
 
 jobs:
   
-  # This one should work and use the overriden value
+  # This one should work and print hardcode
    testoverride:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
-    # vars: inherit
     with:
       targetenv: ${{ inputs.targetenv }} 
     secrets:
       testsec: "hardcode"
 
-  # This one should work and use the overriden value
+  # This one should work and print hardcode
    testoverride_empty:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
-    # vars: inherit
     with:
       targetenv: "" 
     secrets:
       testsec: "hardcode"
 
-  # This one should work and use the overriden value
+  # This one should work and use print fromenv
    testoverride_hardcoded:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
-    # vars: inherit
     with:
       targetenv: "environment_mlcb_test_param"
     secrets:
