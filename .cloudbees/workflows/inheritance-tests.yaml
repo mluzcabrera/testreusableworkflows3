@@ -6,7 +6,7 @@ on:
     inputs:
       targetenv:
         type: string
-        default: ""
+
 jobs:
   # This one should fail as I am not enabling inheritance
   # testcall:
