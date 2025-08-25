@@ -20,6 +20,13 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }}
 
+   testcallwronginput:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable.yaml
+    vars: inherit
+    secrets: inherit
+    with:
+      targetenv: ${{ inputs.targetenv2222 }}    
+
    print:
     steps:
       - name: Print testvar in component
