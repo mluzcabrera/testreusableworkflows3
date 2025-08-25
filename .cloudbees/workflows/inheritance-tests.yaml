@@ -21,7 +21,7 @@ jobs:
     with:
       targetenv: ${{ inputs.targetenv }}
 
-  # This one should work 
+  # This one should work and use the overriden value
    testoverride:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
     vars: inherit
@@ -50,4 +50,4 @@ jobs:
         uses: docker://golang:1.20.3-alpine3.17
         shell: sh
         run: |
-          echo "testsec: ${{ secrets.testsec }}
+          echo "testsec: ${{ secrets.testsec }}"
