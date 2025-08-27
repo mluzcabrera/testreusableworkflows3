@@ -1,0 +1,44 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: inheritance tests in 3 levels
+on:
+  workflow_dispatch:
+    inputs:
+      targetenv:
+        type: string
+      
+
+jobs:
+  # This one should fail as I am not enabling inheritance
+  # testcall:
+  #  uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/l2-reusable.yaml
+
+  # This one should work as I am enabling inheritance
+   testcall:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/l2-reusable.yaml
+    vars: inherit
+    secrets: inherit
+    with:
+      targetenv: ${{ inputs.targetenv }}
+   
+
+   # This must fail because that input does not exist
+   # testcallwronginput:
+   #  uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/l2-reusable.yaml
+   #  vars: inherit
+   #  secrets: inherit
+   #  with:
+   #    targetenv: ${{ inputs.targetenv2222 }}    
+
+   print:
+    steps:
+      - name: Print testvar in component
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testvar: ${{ vars.testvar }}"
+      - name: Print testsec in component
+        uses: docker://golang:1.20.3-alpine3.17
+        shell: sh
+        run: |
+          echo "testsec: ${{ secrets.testsec }}"
