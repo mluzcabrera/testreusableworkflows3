@@ -3,8 +3,12 @@ kind: workflow
 name: call rw action
 on:
   workflow_dispatch:
-
 jobs:
   call-l0:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/rw-action.yaml
-    
+  use_actions:
+    steps:
+      - name: use action
+        uses: cloudbees-io/checkout@v1
+      - name: use preconf-action
+        uses: mlcb_checkout
