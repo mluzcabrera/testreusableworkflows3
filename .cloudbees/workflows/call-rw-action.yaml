@@ -4,7 +4,7 @@ name: call rw action
 on:
   workflow_dispatch:
 jobs:
-  call-l0:
+  call-rw-action:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/rw-action.yaml
   use_actions:
     steps:
