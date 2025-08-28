@@ -46,24 +46,3 @@ jobs:
     - uses: docker://alpine:3.20
       run: |
         echo "hello job-D"
-
-
-
-
-
-
-
-
-
-
-
-Message Nagesh B S
-
-
-
-
-
-
-
-
-
