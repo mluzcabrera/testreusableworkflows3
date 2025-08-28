@@ -29,17 +29,7 @@ jobs:
       run: |
         echo "hello job-B"
 
-        
-# job-D depends has job-B (terminal job in stage 1) in the needs (it also has dependency on job-A)
-  job-D:
-    needs:
-      - job-B
-      - job-A
-    steps:
-    - uses: docker://alpine:3.20
-      run: |
-        echo "hello job-D"
-
+#################### stage 2
 
   job-C:
     needs:
@@ -48,6 +38,26 @@ jobs:
     - uses: docker://alpine:3.20
       run: |
         echo "hello job-C"
+
+  job-D:
+    needs:
+      - job-C
+    steps:
+    - uses: docker://alpine:3.20
+      run: |
+        echo "hello job-D"
+
+
+
+
+
+
+
+
+
+
+
+Message Nagesh B S
 
 
 
