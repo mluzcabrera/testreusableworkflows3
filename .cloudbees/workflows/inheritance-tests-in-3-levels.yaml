@@ -9,7 +9,7 @@ on:
       
 
 jobs:
-  testcall:
+  call-l2:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/l2-reusable.yaml
     vars: inherit
     secrets: inherit
