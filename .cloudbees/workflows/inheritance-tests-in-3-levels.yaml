@@ -6,6 +6,7 @@ on:
     inputs:
       targetenv:
         type: string
+        default: "environment_mlcb_test_param"
       
 
 jobs:
@@ -15,4 +16,3 @@ jobs:
     secrets: inherit
     with:
       targetenv: ${{ inputs.targetenv }}
-  
