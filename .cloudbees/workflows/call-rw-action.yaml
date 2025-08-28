@@ -1,0 +1,10 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: call rw action
+on:
+  workflow_dispatch:
+
+jobs:
+  call-l0:
+    uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/rw_action.yaml
+    
