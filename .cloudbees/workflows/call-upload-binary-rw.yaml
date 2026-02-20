@@ -4,11 +4,25 @@ name: call UPLOAD BINARY RW
 on:
   workflow_dispatch:
 jobs:
-  use_actions:
-    steps:
-      - id: upload-binary
-        name: Upload binary using action
-        uses: cloudbees-io/asset-chain-utils-preprod/upload-binary@v1
-        with:
-          file-path: container-image.tar
-          file-type: BINARY_CONTAINER
+    build:
+      steps:
+        - name: Get source code
+          uses: cloudbees-io/checkout@v1
+        - id: build-container
+          name: Build container image
+          uses: docker://gcr.io/kaniko-project/executor:debug
+          run: |
+            /kaniko/executor --context $CLOUDBEES_WORKSPACE --build-arg USER=cbp-qa-automation,TOKEN=${{ secrets.GH_SECURITY_PAT }} --dockerfile $CLOUDBEES_WORKSPACE/Dockerfile --tar-path $CLOUDBEES_WORKSPACE/container-image.tar --no-push
+        - id: register-artifact
+          name: Register the artifact
+          uses: cloudbees-io/register-build-artifact@v1
+          with:
+            name: javarepo
+            version: hac-0.1
+            url: 020229604682.dkr.ecr.us-east-1.amazonaws.com/throwaway/actions/vulnerable-image:hac-0.1
+        - id: upload-binary
+          name: Upload binary using action
+          uses: cloudbees-io/asset-chain-utils-preprod/upload-binary@v1
+          with:
+            file-path: container-image.tar
+            file-type: BINARY_CONTAINER
