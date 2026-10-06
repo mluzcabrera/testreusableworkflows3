@@ -22,7 +22,7 @@ jobs:
    testoverride_empty:
     uses: mluzcabrera/reusableworkflowsrepo/.cloudbees/workflows/reusable3.yaml
     with:
-      targetenv: "" 
+      targetenv: "tests" 
     secrets:
       testsec: "hardcode"
 
